@@ -1,0 +1,12 @@
+= programmable-metronome
+
+A programmable metronome for a piece of music with different time signature.
+
+== Goal
+
+Provide a base metronome that can be configured for a concrete music piece. +
+Build a collection / plattform for musicians to share music piece configurations.
+
+== Notes
+
+Project initialization and first implementation done by Dieter Koch.
