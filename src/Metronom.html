@@ -1,44 +1,46 @@
 <!DOCTYPE html>
-<html lang="de" data-ember-extension="1"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <title>Metronom</title>
-    <script type="text/javascript" src="./Metronom_files/metronom.js"></script>
-  </head>
-  <body>
-      <h1>Masquerade for Brass</h1>
-      <link rel="stylesheet" href="./Metronom_files/metronom.css">
-      
-      <table>
-        <tbody><tr>
-        	<td>Tempo (Viertel):</td>
-      		<td><input id="tempo" type="number" value="140" maxlength="3"></td>
-      		<td><input type="checkbox" id="achtelzeigen" name="achtelzeigen" value="achtelzeigen" checked="checked">Achtel anzeigen</td>
-        </tr>
-        <tr>
-        	<td>Satz (Nr):</td>
-      		<td><input id="satz" type="number" value="3" min="1" max="3" maxlength="1" onchange="wechsleTempo()"></td>
-        </tr>
-      	<tr>
-      		<td>Starttakt:</td>
-      		<td><input id="starttakt" type="number" value="1" maxlength="3"></td>
-      	</tr>
-      	<tr>
-      		<td>Vorlauf (Anz. Takte):</td>
-      		<td><input id="vorlauf" type="number" value="2" maxlength="3"></td>
-      	</tr>
-      	<tr>
-      	</tr>
-      	<tr>
-      		<td>Aktueller Takt:</td>
-      		<td><input id="aktuellertakt" type="text" value="" maxlength="3"></td>
-      	</tr>
-      </tbody></table>
-      <button href="javascript:;" onclick="start();">Start</button>
-      <button href="javascript:;" onclick="stop();">Stopp</button>
-  
+<html lang="de" data-ember-extension="1">
 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+	<title>Metronom</title>
+	<script type="text/javascript" src="./Metronom_files/metronom.js"></script>
+</head>
 
+<body>
+	<h1>Masquerade for Brass</h1>
+	<link rel="stylesheet" href="./Metronom_files/metronom.css">
 
+	<table>
+		<tbody>
+			<tr>
+				<td>Tempo (Viertel):</td>
+				<td><input id="tempo" type="number" value="140" maxlength="3"></td>
+				<td><input type="checkbox" id="achtelzeigen" name="achtelzeigen" value="achtelzeigen" checked="checked">Achtel anzeigen</td>
+			</tr>
+			<tr>
+				<td>Satz (Nr):</td>
+				<td><input id="satz" type="number" value="3" min="1" max="3" maxlength="1" onchange="wechsleTempo()"></td>
+			</tr>
+			<tr>
+				<td>Starttakt:</td>
+				<td><input id="starttakt" type="number" value="1" maxlength="3"></td>
+			</tr>
+			<tr>
+				<td>Vorlauf (Anz. Takte):</td>
+				<td><input id="vorlauf" type="number" value="2" maxlength="3"></td>
+			</tr>
+			<tr>
+			</tr>
+			<tr>
+				<td>Aktueller Takt:</td>
+				<td><input id="aktuellertakt" type="text" value="" maxlength="3"></td>
+			</tr>
+		</tbody>
+	</table>
+	<button href="javascript:;" onclick="start();">Start</button>
+	<button href="javascript:;" onclick="stop();">Stopp</button>
+</body>
 
-</body></html>
+</html>
