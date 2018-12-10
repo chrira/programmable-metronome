@@ -7,6 +7,11 @@ A programmable metronome for a piece of music with different time signature.
 Provide a base metronome that can be configured for a concrete music piece. +
 Build a collection / plattform for musicians to share music piece configurations.
 
+=== Technical
+
+Resulting website should be static and run on it's own.
+This to support as many devices as possible.
+
 == Notes
 
 Project initialization and first implementation done by Dieter Koch.
