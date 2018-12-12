@@ -1,11 +1,12 @@
 language: node_js
 node_js:
   - "iojs"
-  - "7"
+  - "11"
 deploy:
   provider: npm
-  skip-cleanup: true
+  email: "raaflaub@puzzle.ch"
   github-token: $GITHUB_TOKEN
+  skip-cleanup: true
   keep-history: true
   local-dir: src
   target-branch: gh-pages
