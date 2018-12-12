@@ -1,0 +1,16 @@
+{
+    "name": "programmable-metronome",
+    "version": "0.1.0",
+    "description": "",
+    "main": "src/Metronom_files/metronom.js",
+    "scripts": {
+        "dev": "parcel src/index.html",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Christoph Raaflaub",
+    "license": "GNU GPLv3",
+    "devDependencies": {
+        "parcel-bundler": "^1.10.3"
+    }
+}

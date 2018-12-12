@@ -1,6 +1,9 @@
 language: node_js
+node_js:
+  - "iojs"
+  - "7"
 deploy:
-  provider: pages
+  provider: npm
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
   keep-history: true
