@@ -3,7 +3,7 @@ node_js:
   - "iojs"
   - "11"
 deploy:
-  provider: npm
+  provider: pages
   email: "raaflaub@puzzle.ch"
   github-token: $GITHUB_TOKEN
   skip-cleanup: true
