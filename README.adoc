@@ -12,6 +12,29 @@ Build a collection / plattform for musicians to share music piece configurations
 Resulting website should be static and run on it's own.
 This to support as many devices as possible.
 
+== develop
+
+[PARCEL](https://parceljs.org/)
+
+
+=== build
+
+```bash
+npm install
+```
+
+=== start dev server
+
+```bash
+npm run dev
+```
+
+=== build dist
+
+```bash
+npm run build
+```
+
 == Notes
 
 Project initialization and first implementation done by Dieter Koch.
