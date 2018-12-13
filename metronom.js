@@ -1,5 +1,11 @@
 "use strict";
 
+
+document.getElementById("startButton").addEventListener("click", start);
+document.getElementById("stopButton").addEventListener("click", stop);
+
+
+
 //var achtel = 0;
 var takt = 0;
 var schlag = 0;
