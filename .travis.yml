@@ -7,13 +7,14 @@ install:
   - npm install
 script:
   - npm test
-  - npm run build
+#  - npm run build
 deploy:
   provider: pages
   github-token: $GITHUB_TOKEN
   skip-cleanup: true
   keep-history: true
-  local-dir: dist
+  local-dir: src
+#  local-dir: dist
   target-branch: gh-pages
   verbose: true
   on:
