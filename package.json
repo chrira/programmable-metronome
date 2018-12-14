@@ -4,9 +4,11 @@
     "description": "",
     "main": "src/metronom.js",
     "scripts": {
+        "clean": "rm -rf dist/*",
         "dev": "parcel src/index.html",
         "test": "echo \"Error: no test specified\"",
-        "build": "parcel build src/index.html"
+        "build": "parcel build src/index.html",
+        "prebuild": "npm run clean"
     },
     "keywords": [],
     "author": "Christoph Raaflaub",

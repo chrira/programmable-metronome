@@ -7,7 +7,7 @@ deploy:
   github-token: $GITHUB_TOKEN
   skip-cleanup: true
   keep-history: true
-  local-dir: src
+  local-dir: dist
   target-branch: gh-pages
   verbose: true
   on:
