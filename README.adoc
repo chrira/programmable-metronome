@@ -35,6 +35,14 @@ npm run dev
 npm run build
 ```
 
+=== test
+
+Test files are located in the [spec](spec/) folder.
+
+```bash
+npm test
+```
+
 == Notes
 
 Project initialization and first implementation done by Dieter Koch.
