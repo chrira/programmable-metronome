@@ -8,6 +8,7 @@
         "dev": "parcel src/index.html",
         "test": "jasmine",
         "build": "parcel build src/index.html",
+        "build:github": "parcel build src/index.html --public-url https://chrira.github.io/programmable-metronome/",
         "prebuild": "npm run clean"
     },
     "keywords": [],
