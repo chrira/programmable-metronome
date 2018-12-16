@@ -1,6 +1,6 @@
 "use strict";
 
-import { barsSatz1, barsSatz2, barsSatz3 } from './masquerade.js'
+import { barsSatz1, barsSatz2, barsSatz3 } from './music/masquerade.js'
 
 document.getElementById("startButton").addEventListener("click", start);
 document.getElementById("stopButton").addEventListener("click", stop);
