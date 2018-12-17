@@ -1,6 +1,10 @@
 "use strict";
 
-import { barsSatz1, barsSatz2, barsSatz3 } from './music/masquerade.js'
+var Masquerade = require('./music/masquerade');
+
+var barsSatz1 = Masquerade.barsSatz1();
+var barsSatz2 = Masquerade.barsSatz2();
+var barsSatz3 = Masquerade.barsSatz3();
 
 document.getElementById("startButton").addEventListener("click", start);
 document.getElementById("stopButton").addEventListener("click", stop);
