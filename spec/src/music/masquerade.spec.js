@@ -11,11 +11,11 @@ describe("Masquerade", function() {
 			origBarsSatz = origBarsSatz1;
 		});
 
-		it("should have right amount of measures", function() {
+		it("should have right amount of bars", function() {
 			expect(barsSatz.length).toBe(66);
 		});
 
-		it("measure 1 should have right amount of beats", function() {
+		it("bar 1 should have right amount of beats", function() {
 			expect(barsSatz[0].length).toBe(4);
 		});
 
@@ -24,10 +24,10 @@ describe("Masquerade", function() {
 
 			for (var i = 0; i < size; i++) {
 				if (origBarsSatz[i].length != barsSatz[i].length) {
-					fail('measure ' + i + ' length is not right, orig: ' + origBarsSatz[i].length + ' actual: ' + barsSatz[i.length]);
+					fail('bar ' + i + ' length is not right, orig: ' + origBarsSatz[i].length + ' actual: ' + barsSatz[i.length]);
 				}
 				if (origBarsSatz[i].toString() !== barsSatz[i].toString()) {
-					fail('measure ' + i + ' is not right, orig: ' + origBarsSatz[i] + ' actual: ' + barsSatz[i]);
+					fail('bar ' + i + ' is not right, orig: ' + origBarsSatz[i] + ' actual: ' + barsSatz[i]);
 				}         
 			}
 		});
@@ -42,11 +42,11 @@ describe("Masquerade", function() {
 			origBarsSatz = origBarsSatz2;
 		});
 
-		it("should have right amount of measures", function() {
+		it("should have right amount of bars", function() {
 			expect(barsSatz.length).toBe(75);
 		});
 
-		it("measure 1 should have right amount of beats", function() {
+		it("bar 1 should have right amount of beats", function() {
 			expect(barsSatz[0].length).toBe(3);
 		});
 
@@ -55,10 +55,10 @@ describe("Masquerade", function() {
 
 			for (var i = 0; i < size; i++) {
 				if (origBarsSatz[i].length != barsSatz[i].length) {
-					fail('measure ' + i + ' length is not right, orig: ' + origBarsSatz[i].length + ' actual: ' + barsSatz[i.length]);
+					fail('bar ' + i + ' length is not right, orig: ' + origBarsSatz[i].length + ' actual: ' + barsSatz[i.length]);
 				}
 				if (origBarsSatz[i].toString() !== barsSatz[i].toString()) {
-					fail('measure ' + i + ' is not right, orig: ' + origBarsSatz[i] + ' actual: ' + barsSatz[i]);
+					fail('bar ' + i + ' is not right, orig: ' + origBarsSatz[i] + ' actual: ' + barsSatz[i]);
 				}         
 			}
 		});
@@ -73,19 +73,19 @@ describe("Masquerade", function() {
 			origBarsSatz = origBarsSatz3;
 		});
 
-		it("should have right amount of measures", function() {
+		it("should have right amount of bars", function() {
 			expect(barsSatz.length).toBe(215);
 		});
 
-		it("measure 1 should have right amount of beats", function() {
+		it("bar 1 should have right amount of beats", function() {
 			expect(barsSatz[0].length).toBe(4);
 		});
 
-		it("measure 6 should have right amount of beats", function() {
+		it("bar 6 should have right amount of beats", function() {
 			expect(barsSatz[5].length).toBe(3);
 		});
 
-		it("measure 16 should have right amount of beats", function() {
+		it("bar 16 should have right amount of beats", function() {
 			expect(barsSatz[15].length).toBe(1);
 		});
 
@@ -94,10 +94,10 @@ describe("Masquerade", function() {
 
 			for (var i = 0; i < size; i++) {
 				if (origBarsSatz[i].length != barsSatz[i].length) {
-					fail('measure ' + i + ' length is not right, orig: ' + origBarsSatz[i].length + ' actual: ' + barsSatz[i.length]);
+					fail('bar ' + i + ' length is not right, orig: ' + origBarsSatz[i].length + ' actual: ' + barsSatz[i.length]);
 				}
 				if (origBarsSatz[i].toString() !== barsSatz[i].toString()) {
-					fail('measure ' + i + ' is not right, orig: ' + origBarsSatz[i] + ' actual: ' + barsSatz[i]);
+					fail('bar ' + i + ' is not right, orig: ' + origBarsSatz[i] + ' actual: ' + barsSatz[i]);
 				}         
 			}
 		});
