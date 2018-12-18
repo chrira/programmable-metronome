@@ -19,7 +19,18 @@ describe("Masquerade", function() {
 			expect(barsSatz[0].length).toBe(4);
 		});
 
-		// TODO compare every measure
+		it("compare whole satz", function() {
+			const size = origBarsSatz.length;
+
+			for (var i = 0; i < size; i++) {
+				if (origBarsSatz[i].length != barsSatz[i].length) {
+					fail('measure ' + i + ' length is not right, orig: ' + origBarsSatz[i].length + ' actual: ' + barsSatz[i.length]);
+				}
+				if (origBarsSatz[i].toString() !== barsSatz[i].toString()) {
+					fail('measure ' + i + ' is not right, orig: ' + origBarsSatz[i] + ' actual: ' + barsSatz[i]);
+				}         
+			}
+		});
 	});
 
 	describe("Satz 2", function() {
@@ -39,7 +50,18 @@ describe("Masquerade", function() {
 			expect(barsSatz[0].length).toBe(3);
 		});
 
-		// TODO compare every measure
+		it("compare whole satz", function() {
+			const size = origBarsSatz.length;
+
+			for (var i = 0; i < size; i++) {
+				if (origBarsSatz[i].length != barsSatz[i].length) {
+					fail('measure ' + i + ' length is not right, orig: ' + origBarsSatz[i].length + ' actual: ' + barsSatz[i.length]);
+				}
+				if (origBarsSatz[i].toString() !== barsSatz[i].toString()) {
+					fail('measure ' + i + ' is not right, orig: ' + origBarsSatz[i] + ' actual: ' + barsSatz[i]);
+				}         
+			}
+		});
 	});
 
 	describe("Satz 3", function() {
@@ -67,7 +89,18 @@ describe("Masquerade", function() {
 			expect(barsSatz[15].length).toBe(1);
 		});
 
-		// TODO compare every measure
+		it("compare whole satz", function() {
+			const size = origBarsSatz.length;
+
+			for (var i = 0; i < size; i++) {
+				if (origBarsSatz[i].length != barsSatz[i].length) {
+					fail('measure ' + i + ' length is not right, orig: ' + origBarsSatz[i].length + ' actual: ' + barsSatz[i.length]);
+				}
+				if (origBarsSatz[i].toString() !== barsSatz[i].toString()) {
+					fail('measure ' + i + ' is not right, orig: ' + origBarsSatz[i] + ' actual: ' + barsSatz[i]);
+				}         
+			}
+		});
 	});
 });
 
