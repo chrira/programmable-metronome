@@ -1,3 +1,5 @@
+var Piece = require('./piece');
+
 const barsSatz1 = [
 	[2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2]
 ];
@@ -11,15 +13,15 @@ const barsSatz3 = [
 ];
 
 function Masquerade() {
+  Piece.call(this, "Masquerade", [barsSatz1, barsSatz2, barsSatz3]);
 }
-Masquerade.barsSatz1 = function() {
-  return barsSatz1;
-};
-Masquerade.barsSatz2 = function() {
-  return barsSatz2;
-};
-Masquerade.barsSatz3 = function() {
-  return barsSatz3;
-};
+
+Masquerade.prototype = Object.create(Piece.prototype);
+Masquerade.prototype.constructor = Masquerade;
+
+Object.defineProperty(Masquerade.prototype, 'constructor', { 
+  value: Masquerade, 
+  enumerable: false,
+  writable: true });
 
 module.exports = Masquerade;

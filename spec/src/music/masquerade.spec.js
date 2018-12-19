@@ -1,13 +1,26 @@
 describe("Masquerade", function() {
 
 	var Masquerade = require('../../../src/music/masquerade');
+	var masquerade;
+
+	beforeEach(function() {
+		masquerade = new Masquerade();
+	});
+
+	it("should have right name", function() {
+		expect(masquerade.getName()).toBe('Masquerade');
+	});
+
+	it("should have right amount of parts", function() {
+		expect(masquerade.getParts()).toBe(3);
+	});
 
 	describe("Satz 1", function() {
 		var barsSatz;
 		var origBarsSatz;
 
 		beforeEach(function() {
-			barsSatz = Masquerade.barsSatz1()
+			barsSatz = masquerade.getPart(1)
 			origBarsSatz = origBarsSatz1;
 		});
 
@@ -38,7 +51,7 @@ describe("Masquerade", function() {
 		var origBarsSatz;
 
 		beforeEach(function() {
-			barsSatz = Masquerade.barsSatz2()
+			barsSatz = masquerade.getPart(2)
 			origBarsSatz = origBarsSatz2;
 		});
 
@@ -69,7 +82,7 @@ describe("Masquerade", function() {
 		var origBarsSatz;
 
 		beforeEach(function() {
-			barsSatz = Masquerade.barsSatz3()
+			barsSatz = masquerade.getPart(3)
 			origBarsSatz = origBarsSatz3;
 		});
 

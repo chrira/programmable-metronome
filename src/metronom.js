@@ -2,9 +2,11 @@
 
 var Masquerade = require('./music/masquerade');
 
-var barsSatz1 = Masquerade.barsSatz1();
-var barsSatz2 = Masquerade.barsSatz2();
-var barsSatz3 = Masquerade.barsSatz3();
+var piece = new Masquerade();
+
+var barsSatz1 = piece.getPart(1);
+var barsSatz2 = piece.getPart(2);
+var barsSatz3 = piece.getPart(3);
 
 document.getElementById("startButton").addEventListener("click", start);
 document.getElementById("stopButton").addEventListener("click", stop);
