@@ -46,11 +46,10 @@ Piece.prototype.addParts = function(parts) {
         if (subPart2 instanceof Bars) {
           var barsSubPart2 = [subPart2.amount];
           for (var l = 0; l < subPart2.amount; l++) {
-            barsSubPart2[l] = subPart2.content;
+            part2[part2.length] = subPart2.content;
           }
-          part2.concat(barsSubPart2);
         } else {
-          part2[k] = subPart2;
+          part2[part2.length] = subPart2;
         }
       }
 
