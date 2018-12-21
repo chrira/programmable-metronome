@@ -4,19 +4,26 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-	<title>Metronom</title>
+	<title>Programmable Metronome</title>
 </head>
 
 <body>
-	<h1>Masquerade for Brass</h1>
 	<link rel="stylesheet" href="./metronom.css">
 
+	<h1>Programmable Metronome</h1>
+
+	<select>
+		<option value="masquerade">Masquerade for Brass</option>
+		<option value="riverdance" disabled= true>Riverdance</option>
+	</select>
+
+	<h4 id="pieceTitle">Masquerade for Brass</h4>
 	<table>
 		<tbody>
 			<tr>
 				<td>Tempo (Viertel):</td>
 				<td><input id="tempo" type="number" value="140" maxlength="3"></td>
-				<td><input type="checkbox" id="achtelzeigen" name="achtelzeigen" value="achtelzeigen" checked="checked">Achtel anzeigen</td>
+				<td><input id="achtelzeigen" type="checkbox" name="achtelzeigen" value="achtelzeigen" checked="checked">Achtel anzeigen</td>
 			</tr>
 			<tr>
 				<td>Satz (Nr):</td>
