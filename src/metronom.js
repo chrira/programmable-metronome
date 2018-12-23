@@ -8,9 +8,36 @@ var barsSatz1 = piece.getPart(1);
 var barsSatz2 = piece.getPart(2);
 var barsSatz3 = piece.getPart(3);
 
-document.getElementById("startButton").addEventListener("click", start);
-document.getElementById("stopButton").addEventListener("click", stop);
+// event listener
 
+getStartButton().addEventListener("click", start);
+getStopButton().addEventListener("click", stop);
+getPieceSelection().addEventListener("change", pieceChanged);
+
+function start() {
+	ersterBeep = false;
+	erstenBeepAusloesen();
+
+	stopped = true;
+	setVariables();
+	//alert("start");
+	stopTimer();
+	stopped = false;
+	run();
+	//setTimeout(jetztstarten, 5);
+}
+
+function stop() {
+	stopped = true;
+}
+
+function pieceChanged() {
+
+	var sel = getPieceSelection();
+	var text = sel.options[sel.selectedIndex].text;
+
+	getPieceTitle().innerHTML = text;
+}
 
 
 //var achtel = 0;
@@ -40,25 +67,12 @@ function wechsleTempo(id) {
 		document.getElementById("tempo").value = 140;
 	}
 }
-function start() {
-	ersterBeep = false;
-	erstenBeepAusloesen();
-
-	stopped = true;
-	setVariables();
-	//alert("start");
-	stopTimer();
-	stopped = false;
-	run();
-	//setTimeout(jetztstarten, 5);
-}
 
 function jetztstarten() {
 	//alert("start");
 	stopped = false;
 	run();
 }
-
 
 function setVariables() {
 	var tempo = document.getElementById("tempo").value;
@@ -145,10 +159,6 @@ function stopTimer() {
 	}
 }
 
-function stop() {
-	stopped = true;
-}
-
 // Beep erstellen
 // https://stackoverflow.com/questions/35497243/how-to-make-a-short-beep-in-javascript-that-can-be-called-repeatedly-on-a-page#35498316
 //var a = new AudioContext();
@@ -199,4 +209,26 @@ function sumArray(myArray) {
 		count += myArray[i];
 	}
 	return count;
+}
+
+// helpers
+
+function getElementById(id) {
+	return document.getElementById(id);
+}
+
+function getStartButton() {
+	return getElementById("startButton");
+}
+
+function getStopButton() {
+	return getElementById("stopButton");
+}
+
+function getPieceSelection() {
+	return getElementById("pieceSelection");
+}
+
+function getPieceTitle() {
+	return getElementById("pieceTitle");
 }
