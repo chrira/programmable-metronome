@@ -34,7 +34,11 @@ const barsSatz3 = [
 ];
 
 function Masquerade() {
-  Piece.call(this, "Masquerade", [barsSatz1, barsSatz2, barsSatz3]);
+  Piece.call(this,
+    "Masquerade",
+    [barsSatz1, barsSatz2, barsSatz3],
+    [176, 60, 140]
+    );
 }
 
 Masquerade.prototype = Object.create(Piece.prototype);

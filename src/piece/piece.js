@@ -4,10 +4,11 @@
 
 var Bars = require('./bars');
 
-function Piece(name, parts) {
+function Piece(name, parts, tempi) {
   this.name = name;
   this.parts = [parts.length];
   this.addParts(parts);
+  this.tempi = tempi;
 }
 
 Piece.prototype.getName = function() {
@@ -21,6 +22,10 @@ Piece.prototype.getParts = function() {
 Piece.prototype.getPart = function(number) {
   return this.parts[number - 1];
 };
+
+Piece.prototype.getTempi = function() {
+  return this.tempi;
+}
 
 Piece.prototype.addParts = function(parts) {
   const size = parts.length;

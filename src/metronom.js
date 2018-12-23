@@ -8,11 +8,14 @@ var barsSatz1 = piece.getPart(1);
 var barsSatz2 = piece.getPart(2);
 var barsSatz3 = piece.getPart(3);
 
+var tempi = piece.getTempi();
+
 // event listener
 
 getStartButton().addEventListener("click", start);
 getStopButton().addEventListener("click", stop);
 getPieceSelection().addEventListener("change", pieceChanged);
+getElementById("satz").addEventListener("change", wechsleTempo);
 
 function start() {
 	ersterBeep = false;
@@ -20,11 +23,9 @@ function start() {
 
 	stopped = true;
 	setVariables();
-	//alert("start");
 	stopTimer();
 	stopped = false;
 	run();
-	//setTimeout(jetztstarten, 5);
 }
 
 function stop() {
@@ -32,10 +33,8 @@ function stop() {
 }
 
 function pieceChanged() {
-
 	var sel = getPieceSelection();
 	var text = sel.options[sel.selectedIndex].text;
-
 	getPieceTitle().innerHTML = text;
 }
 
@@ -56,20 +55,10 @@ var ersterBeep = true;
 
 function wechsleTempo(id) {
 	var neueSatzNummer = document.getElementById("satz").value;
-
-	if (neueSatzNummer == 1) {
-		document.getElementById("tempo").value = 176;
-	}
-	else if (neueSatzNummer == 2) {
-		document.getElementById("tempo").value = 60;
-	}
-	else if (neueSatzNummer == 3) {
-		document.getElementById("tempo").value = 140;
-	}
+	document.getElementById("tempo").value = tempi[neueSatzNummer - 1];
 }
 
 function jetztstarten() {
-	//alert("start");
 	stopped = false;
 	run();
 }
