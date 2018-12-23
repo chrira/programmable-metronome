@@ -1,6 +1,7 @@
 "use strict";
 
 var Masquerade = require('./music/masquerade');
+var Riverdance = require('./music/riverdance');
 
 var piece = new Masquerade();
 
@@ -36,6 +37,17 @@ function pieceChanged() {
 	var sel = getPieceSelection();
 	var text = sel.options[sel.selectedIndex].text;
 	getPieceTitle().innerHTML = text;
+
+	if (sel.selectedIndex === 0) {
+		piece = new Masquerade();
+	}
+	if (sel.selectedIndex === 1) {
+		piece = new Riverdance();
+	}
+
+	getElementById("tempo").value = piece.getTempi()[0];
+	getElementById("satz").value = 1;
+	getElementById("satz").max = piece.getParts();
 }
 
 
