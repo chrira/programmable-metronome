@@ -40,9 +40,19 @@ function pieceChanged() {
 
 	if (sel.selectedIndex === 0) {
 		piece = new Masquerade();
+
+		barsSatz1 = piece.getPart(1);
+		barsSatz2 = piece.getPart(2);
+		barsSatz3 = piece.getPart(3);
+		tempi = piece.getTempi();
 	}
 	if (sel.selectedIndex === 1) {
 		piece = new Riverdance();
+		
+		barsSatz1 = piece.getPart(1);
+		barsSatz2 = piece.getPart(2);
+		barsSatz3 = piece.getPart(3);
+		tempi = piece.getTempi();
 	}
 
 	getElementById("tempo").value = piece.getTempi()[0];
