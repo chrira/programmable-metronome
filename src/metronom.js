@@ -3,7 +3,7 @@
 var Masquerade = require('./music/masquerade');
 var Riverdance = require('./music/riverdance');
 
-var piece = new Masquerade();
+var piece = new Riverdance();
 
 var barsSatz1 = piece.getPart(1);
 var barsSatz2 = piece.getPart(2);
@@ -39,16 +39,16 @@ function pieceChanged() {
 	getPieceTitle().innerHTML = text;
 
 	if (sel.selectedIndex === 0) {
-		piece = new Masquerade();
-
+		piece = new Riverdance();
+		
 		barsSatz1 = piece.getPart(1);
 		barsSatz2 = piece.getPart(2);
 		barsSatz3 = piece.getPart(3);
 		tempi = piece.getTempi();
 	}
 	if (sel.selectedIndex === 1) {
-		piece = new Riverdance();
-		
+		piece = new Masquerade();
+
 		barsSatz1 = piece.getPart(1);
 		barsSatz2 = piece.getPart(2);
 		barsSatz3 = piece.getPart(3);
@@ -243,3 +243,6 @@ function getPieceSelection() {
 function getPieceTitle() {
 	return getElementById("pieceTitle");
 }
+
+// update ui fields with piece infos
+pieceChanged();
