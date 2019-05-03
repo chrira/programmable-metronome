@@ -1,63 +1,86 @@
-"use strict";
+import { beep, erstenBeepAusloesen } from './engine';
 
-var Masquerade = require('./music/masquerade');
-var Riverdance = require('./music/riverdance');
+/**
+ * Metronom class
+ */
+function Metronom() {
+	var piece;
+	var barsSatz1;
+	var barsSatz2;
+	var barsSatz3;
+	var tempi;
+}
 
-var piece = new Riverdance();
+Metronom.prototype.getName = function() {
+  return this.name;
+}
 
-var barsSatz1 = piece.getPart(1);
-var barsSatz2 = piece.getPart(2);
-var barsSatz3 = piece.getPart(3);
+Metronom.prototype.pieceChanged = function(piece) {
 
-var tempi = piece.getTempi();
+	this.piece = piece;
+	this.barsSatz1 = piece.getPart(1);
+	this.barsSatz2 = piece.getPart(2);
+	this.barsSatz3 = piece.getPart(3);
+	this.tempi = piece.getTempi();
+}
 
-// event listener
-
-getStartButton().addEventListener("click", start);
-getStopButton().addEventListener("click", stop);
-getPieceSelection().addEventListener("change", pieceChanged);
-getElementById("satz").addEventListener("change", wechsleTempo);
-
-function start() {
+Metronom.prototype.start = function() {
 	ersterBeep = false;
 	erstenBeepAusloesen();
 
 	stopped = true;
-	setVariables();
+	this.setVariables();
 	stopTimer();
 	stopped = false;
 	run();
 }
 
-function stop() {
+Metronom.prototype.stop = function() {
 	stopped = true;
 }
 
-function pieceChanged() {
-	var sel = getPieceSelection();
-	var text = sel.options[sel.selectedIndex].text;
-	getPieceTitle().innerHTML = text;
+Metronom.prototype.partChanged = function(partNumber) {
+	stopped = true;
+}
 
-	if (sel.selectedIndex === 0) {
-		piece = new Riverdance();
-		
-		barsSatz1 = piece.getPart(1);
-		barsSatz2 = piece.getPart(2);
-		barsSatz3 = piece.getPart(3);
-		tempi = piece.getTempi();
+Metronom.prototype.setVariables = function() {
+	var tempo = document.getElementById("tempo").value;
+	achtelDauer = (1000 * 60 / 2) / tempo;
+
+	if (document.getElementById("achtelzeigen").checked) {
+		achtelZeigen = true;
 	}
-	if (sel.selectedIndex === 1) {
-		piece = new Masquerade();
-
-		barsSatz1 = piece.getPart(1);
-		barsSatz2 = piece.getPart(2);
-		barsSatz3 = piece.getPart(3);
-		tempi = piece.getTempi();
+	else {
+		achtelZeigen = false;
 	}
 
-	getElementById("tempo").value = piece.getTempi()[0];
-	getElementById("satz").value = 1;
-	getElementById("satz").max = piece.getParts();
+	var satzNr = document.getElementById("satz").value;
+	if (satzNr == 1) {
+		bars = this.barsSatz1.slice(0);
+	}
+	if (satzNr == 2) {
+		bars = this.barsSatz2.slice(0);
+	}
+	if (satzNr == 3) {
+		bars = this.barsSatz3.slice(0);
+	}
+
+
+	takt = document.getElementById("starttakt").value - 1;
+
+	vorlauf = document.getElementById("vorlauf").value;
+	var startbar = bars[takt];
+	for (var i = 0; i < vorlauf; i++) {
+		bars.splice(takt, 0, startbar);
+	}
+
+	document.getElementById("aktuellertakt").value = takt + 1 - vorlauf;
+
+	// reset
+
+	schlag = 0;
+	achtelDieserSchlag = 0;
+	timestamp = (new Date()).getTime();
 }
 
 
@@ -83,47 +106,6 @@ function wechsleTempo(id) {
 function jetztstarten() {
 	stopped = false;
 	run();
-}
-
-function setVariables() {
-	var tempo = document.getElementById("tempo").value;
-	achtelDauer = (1000 * 60 / 2) / tempo;
-
-	if (document.getElementById("achtelzeigen").checked) {
-		achtelZeigen = true;
-	}
-	else {
-		achtelZeigen = false;
-	}
-
-	var satzNr = document.getElementById("satz").value;
-	if (satzNr == 1) {
-		bars = barsSatz1.slice(0);
-	}
-	if (satzNr == 2) {
-		bars = barsSatz2.slice(0);
-	}
-	if (satzNr == 3) {
-		bars = barsSatz3.slice(0);
-	}
-
-
-	takt = document.getElementById("starttakt").value - 1;
-
-	vorlauf = document.getElementById("vorlauf").value;
-	var startbar = bars[takt];
-	for (var i = 0; i < vorlauf; i++) {
-		bars.splice(takt, 0, startbar);
-	}
-
-	document.getElementById("aktuellertakt").value = takt + 1 - vorlauf;
-
-	// reset
-
-	schlag = 0;
-	achtelDieserSchlag = 0;
-	timestamp = (new Date()).getTime();
-
 }
 
 function run() {
@@ -170,48 +152,6 @@ function stopTimer() {
 	}
 }
 
-// Beep erstellen
-// https://stackoverflow.com/questions/35497243/how-to-make-a-short-beep-in-javascript-that-can-be-called-repeatedly-on-a-page#35498316
-//var a = new AudioContext();
-//var a = new webkitAudioContext();
-
-var a;
-var v;
-var u;
-function erstenBeepAusloesen() {
-	// Do we have Audio API
-	try {
-		window.AudioContext = window.AudioContext || window.webkitAudioContext;
-	} catch (e) {
-		alert('Web Audio API is not supported in this browser');
-	}
-
-	a = new AudioContext();
-	//v = a.createOscillator();
-	//u = a.createGain();
-	//v.connect(u);
-	//v.type = "square";
-	//u.connect(a.destination);
-	beep(1, 100, 1);
-}
-
-function beep(loud, freq, dur) {
-	//var a = new AudioContext();
-	//console.log(loud+x+y)
-
-	// notwendig?
-	v = a.createOscillator();
-	u = a.createGain();
-	v.connect(u);
-	v.type = "square";
-	u.connect(a.destination);
-
-	v.frequency.value = freq;
-	u.gain.value = loud * 0.01;
-	v.start(a.currentTime);
-	v.stop(a.currentTime + dur * 0.001);
-}
-
 // Summe in Array
 // https://stackoverflow.com/questions/3762589/fastest-javascript-summation
 function sumArray(myArray) {
@@ -222,27 +162,4 @@ function sumArray(myArray) {
 	return count;
 }
 
-// helpers
-
-function getElementById(id) {
-	return document.getElementById(id);
-}
-
-function getStartButton() {
-	return getElementById("startButton");
-}
-
-function getStopButton() {
-	return getElementById("stopButton");
-}
-
-function getPieceSelection() {
-	return getElementById("pieceSelection");
-}
-
-function getPieceTitle() {
-	return getElementById("pieceTitle");
-}
-
-// update ui fields with piece infos
-pieceChanged();
+module.exports = Metronom;

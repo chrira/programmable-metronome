@@ -1,9 +1,8 @@
+var Bars = require('./bars');
+
 /**
  * music piece base class
  */
-
-var Bars = require('./bars');
-
 function Piece(name, parts, tempi) {
   this.name = name;
   this.parts = [parts.length];
