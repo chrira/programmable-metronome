@@ -1,87 +1,97 @@
-import { beep, erstenBeepAusloesen } from './engine';
+//import { beep, erstenBeepAusloesen } from './engine';
+
+//var Engine = require('./engine').default;
+
+import B from './B.js';
+import {bar, test} from './C.js';
 
 /**
  * Metronom class
  */
-function Metronom() {
-	var piece;
-	var barsSatz1;
-	var barsSatz2;
-	var barsSatz3;
-	var tempi;
-}
+export class Metronom {
 
-Metronom.prototype.getName = function() {
-  return this.name;
-}
-
-Metronom.prototype.pieceChanged = function(piece) {
-
-	this.piece = piece;
-	this.barsSatz1 = piece.getPart(1);
-	this.barsSatz2 = piece.getPart(2);
-	this.barsSatz3 = piece.getPart(3);
-	this.tempi = piece.getTempi();
-}
-
-Metronom.prototype.start = function() {
-	ersterBeep = false;
-	erstenBeepAusloesen();
-
-	stopped = true;
-	this.setVariables();
-	stopTimer();
-	stopped = false;
-	run();
-}
-
-Metronom.prototype.stop = function() {
-	stopped = true;
-}
-
-Metronom.prototype.partChanged = function(partNumber) {
-	stopped = true;
-}
-
-Metronom.prototype.setVariables = function() {
-	var tempo = document.getElementById("tempo").value;
-	achtelDauer = (1000 * 60 / 2) / tempo;
-
-	if (document.getElementById("achtelzeigen").checked) {
-		achtelZeigen = true;
-	}
-	else {
-		achtelZeigen = false;
+	constructor() {
+		this.piece;
+		this.barsSatz1;
+		this.barsSatz2;
+		this.barsSatz3;
+		this.tempi;
+		this.name = 'Metronom';
+		this.bb = new B();
 	}
 
-	var satzNr = document.getElementById("satz").value;
-	if (satzNr == 1) {
-		bars = this.barsSatz1.slice(0);
-	}
-	if (satzNr == 2) {
-		bars = this.barsSatz2.slice(0);
-	}
-	if (satzNr == 3) {
-		bars = this.barsSatz3.slice(0);
+	getName() {
+		console.log(this.bb.getWeapon());
+		console.log(this.bb.sayHi());
+		test();
+		return this.name;
 	}
 
-
-	takt = document.getElementById("starttakt").value - 1;
-
-	vorlauf = document.getElementById("vorlauf").value;
-	var startbar = bars[takt];
-	for (var i = 0; i < vorlauf; i++) {
-		bars.splice(takt, 0, startbar);
+	pieceChanged(piece) {
+		this.piece = piece;
+		this.barsSatz1 = piece.getPart(1);
+		this.barsSatz2 = piece.getPart(2);
+		this.barsSatz3 = piece.getPart(3);
+		this.tempi = piece.getTempi();
 	}
 
-	document.getElementById("aktuellertakt").value = takt + 1 - vorlauf;
+	start() {
+		ersterBeep = false;
+		erstenBeepAusloesen();
+		stopped = true;
+		this.setVariables();
+		stopTimer();
+		stopped = false;
+		run();
+	}
 
-	// reset
+	stop() {
+		stopped = true;
+	}
 
-	schlag = 0;
-	achtelDieserSchlag = 0;
-	timestamp = (new Date()).getTime();
+	partChanged(partNumber) {
+		this.setVariables();
+		stopped = true;
+	}
+
+	setVariables() {
+		var tempo = document.getElementById("tempo").value;
+		achtelDauer = (1000 * 60 / 2) / tempo;
+		if (document.getElementById("achtelzeigen").checked) {
+			achtelZeigen = true;
+		}
+		else {
+			achtelZeigen = false;
+		}
+		var satzNr = document.getElementById("satz").value;
+		if (satzNr == 1) {
+			bars = this.barsSatz1.slice(0);
+		}
+		if (satzNr == 2) {
+			bars = this.barsSatz2.slice(0);
+		}
+		if (satzNr == 3) {
+			bars = this.barsSatz3.slice(0);
+		}
+		takt = document.getElementById("starttakt").value - 1;
+		vorlauf = document.getElementById("vorlauf").value;
+		var startbar = bars[takt];
+		for (var i = 0; i < vorlauf; i++) {
+			bars.splice(takt, 0, startbar);
+		}
+		document.getElementById("aktuellertakt").value = takt + 1 - vorlauf;
+		// reset
+		schlag = 0;
+		achtelDieserSchlag = 0;
+		timestamp = (new Date()).getTime();
+	}
 }
+
+
+
+
+
+
 
 
 //var achtel = 0;
@@ -162,4 +172,7 @@ function sumArray(myArray) {
 	return count;
 }
 
-module.exports = Metronom;
+// module.exports = Metronom;
+
+export default Metronom;
+//module.exports = B;

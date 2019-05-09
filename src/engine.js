@@ -2,9 +2,10 @@
 import 'babel-polyfill';
 
 // Styles
-import './assets/styles/index.scss';
+//import './assets/styles/index.scss';
 
-"use strict";
+import {B} from './B.js';
+import Metronom from './metronom';
 
 /**
  * Engine class
@@ -12,14 +13,13 @@ import './assets/styles/index.scss';
 function Engine() {
 }
 
-var Metronom = require('./metronom');
+
+//var Metronom = require('./metronom');
 var Masquerade = require('./music/masquerade');
 var Riverdance = require('./music/riverdance');
 
-
-var metronom = new Metronom();
-
 var piece = new Riverdance();
+var metronom = new Metronom();
 
 var barsSatz1 = piece.getPart(1);
 var barsSatz2 = piece.getPart(2);
@@ -63,6 +63,8 @@ function pieceChanged() {
 
 function wechsleSatz() {
 	var neueSatzNummer = document.getElementById("satz").value;
+
+	// TODO problem tempi not to be used here
 	document.getElementById("tempo").value = tempi[neueSatzNummer - 1];
 
 	metronom.partChanged(neueSatzNummer);

@@ -1,19 +1,23 @@
+import {Metronom} from '../../src/metronom';
+
 describe("Metronom", function() {
 
-  /*
-  var Metronom = require('../../src/metronom');
   var metronom;
 
   beforeEach(function() {
     metronom = new Metronom();
   });
-  */
-
-  var a;
+  
 
   it("and so is a spec", function() {
-    a = true;
+    var a = true;
 
     expect(a).toBe(true);
+  });
+
+  it("get name", function() {
+    var name = metronom.getName();
+
+    expect(name).toBe('Metronom');
   });
 });
