@@ -1,3 +1,9 @@
+// Polyfills
+import 'babel-polyfill';
+
+// Styles
+import './assets/styles/index.scss';
+
 "use strict";
 
 /**
