@@ -25,6 +25,9 @@
     "parcel-bundler": "^1.12.4",
     "postcss-modules": "^1.5.0"
   },
+  "browserslist": [
+    "defaults"
+  ],
   "jest": {
     "testEnvironment": "node"
   }
