@@ -3,10 +3,11 @@
   "version": "0.2.0",
   "description": "",
   "scripts": {
-    "clean": "rm -rf dist/* tmp/*",
-    "start": "parcel src/index.html --out-dir=tmp",
+    "clean": "rm -rf dist/* tmp/* .parcel-cache/*",
+    "help": "parcel --help",
+    "start": "parcel src/index.html",
     "test": "jest",
-    "build": "parcel build src/index.html --out-dir=dist --public-url='./'",
+    "build": "parcel build src/index.html --dist-dir=dist --public-url='./'",
     "build:github": "parcel build src/index.html --public-url https://chrira.github.io/programmable-metronome/",
     "prebuild": "npm run clean"
   },
@@ -17,16 +18,20 @@
     "babel-polyfill": "^6.26.0"
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
+    "@parcel/config-default": "^2.3.2",
+    "@parcel/transformer-sass": "^2.3.2",
+    "@parcel/transformer-typescript-tsc": "^2.3.2",
+    "autoprefixer": "^9.8.8",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
-    "jest": "^23.5.0",
-    "node-sass": "^4.14.1",
-    "parcel-bundler": "^1.12.4",
-    "postcss-modules": "^1.5.0"
+    "jest": "^27.5.1",
+    "node-sass": "^7.0.1",
+    "parcel": "^2.3.2",
+    "postcss-modules": "^4.3.1"
   },
   "browserslist": [
-    "defaults"
+    "defaults",
+    "maintained node versions"
   ],
   "jest": {
     "testEnvironment": "node"

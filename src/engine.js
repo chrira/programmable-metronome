@@ -15,6 +15,7 @@ function Engine() {
 var Metronom = require('./metronom');
 var Masquerade = require('./music/masquerade');
 var Riverdance = require('./music/riverdance');
+var Rougemont = require('./music/rougemont');
 
 
 var metronom = new Metronom();
@@ -51,6 +52,9 @@ function pieceChanged() {
 		piece = new Riverdance();
 	}
 	if (sel.selectedIndex === 1) {
+		piece = new Rougemont();
+	}
+	if (sel.selectedIndex === 2) {
 		piece = new Masquerade();
 	}
 
